@@ -35,3 +35,8 @@ jobs:
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+      - name: curl
+        uses: wei/curl@master
+        with:
+          args: -X POST https://api2.pushdeer.com/message/push?pushkey=${{ secrets.PUSHDEER_TOKEN }}&text=notebook-cuda-image-built

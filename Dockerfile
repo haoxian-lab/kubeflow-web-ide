@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.7.1-runtime-ubuntu22.04
+FROM nvidia/cuda:11.7.1-cudnn8-runtime-ubuntu22.04
 # Set bash as the default shell
 ENV SHELL=/bin/bash
 
@@ -18,7 +18,8 @@ RUN pip install \
     numpy \
     torch torchvision torchaudio \
     jupyter \
-    transformers 
+    transformers@git+https://github.com/huggingface/transformers.git \
+    accelerate
 
 CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--no-browser"]
 EXPOSE 8888

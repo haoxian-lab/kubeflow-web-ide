@@ -33,6 +33,6 @@ RUN pip install --no-cache-dir bitsandbytes
 # For bettertransformer
 RUN pip install --no-cache-dir optimum
 
-
+WORKDIR /workspace
 CMD ["jupyter-lab", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--no-browser"]
 EXPOSE 8888

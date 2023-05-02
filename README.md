@@ -15,6 +15,7 @@ cd docker-cuda-Notebook
 UID="$(id -u)" GID="$(id -g)" docker-compose up -d
 ```
 
-# Source
+# References
 
 https://github.com/Tverous/pytorch-notebook
+https://github.com/huggingface/transformers/blob/main/docker/transformers-all-latest-gpu/Dockerfile

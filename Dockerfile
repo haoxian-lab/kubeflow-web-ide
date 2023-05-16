@@ -28,7 +28,6 @@ RUN pip install --no-cache-dir \
     jupyter \
     transformers@git+https://github.com/huggingface/transformers.git 
 
-RUN pip install --no-cache-dir intel_extension_for_pytorch==$INTEL_TORCH_EXT+cpu -f https://software.intel.com/ipex-whl-stable
 RUN pip install --no-cache-dir git+https://github.com/huggingface/accelerate@main#egg=accelerate
 # Add bitsandbytes for mixed int8 testing
 RUN pip install --no-cache-dir bitsandbytes

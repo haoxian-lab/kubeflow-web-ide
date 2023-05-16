@@ -153,7 +153,7 @@ USER root
 ARG CODESERVER_PYTHON_VERSION=2023.8.0
 ARG MINIFORGE_ARCH="x86_64"
 # renovate: datasource=github-tags depName=conda-forge/miniforge versioning=loose
-ARG MINIFORGE_VERSION=4.10.1-4
+ARG MINIFORGE_VERSION=23.1.0-1
 ARG PIP_VERSION=21.1.2
 ARG PYTHON_VERSION=3.10
 ARG PYTORCH='2.0.0'
@@ -184,7 +184,7 @@ RUN curl -sL "https://github.com/conda-forge/miniforge/releases/download/${MINIF
     && conda install -y -q \
     python=${PYTHON_VERSION} \
     conda=${MINIFORGE_VERSION:0:-2} \
-    pip=${PIP_VERSION} \
+    pip \
     && conda update -y -q --all \
     && conda clean -a -f -y \
     && chown -R ${NB_USER}:users ${CONDA_DIR} \

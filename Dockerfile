@@ -188,11 +188,6 @@ RUN python3 -m pip install -r /tmp/requirements.txt --quiet --no-cache-dir \
     && chown -R ${NB_USER}:users ${CONDA_DIR} \
     && chown -R ${NB_USER}:users ${HOME}
 
-# install - codeserver extensions 
-RUN curl -# -L -o /tmp/ms-python-release.vsix "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-python/vsextensions/python/${CODESERVER_PYTHON_VERSION}/vspackage" \
-    && code-server --install-extension /tmp/ms-python-release.vsix \
-    && code-server --list-extensions --show-versions
-
 # s6 - copy scripts
 COPY --chown=jovyan:users s6/ /etc
 

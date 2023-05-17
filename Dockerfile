@@ -141,7 +141,7 @@ FROM vscode as vscode-py
 USER root
 
 # args - software versions
-ARG CODESERVER_PYTHON_VERSION=2023.8.0
+ARG CODESERVER_PYTHON_VERSION=2023.9.11371007
 ARG MINIFORGE_ARCH="x86_64"
 # renovate: datasource=github-tags depName=conda-forge/miniforge versioning=loose
 ARG MINIFORGE_VERSION=23.1.0-1
@@ -188,8 +188,8 @@ RUN python3 -m pip install -r /tmp/requirements.txt --quiet --no-cache-dir \
     && chown -R ${NB_USER}:users ${CONDA_DIR} \
     && chown -R ${NB_USER}:users ${HOME}
 
-# install - codeserver extensions
-RUN curl -# -L -o /tmp/ms-python-release.vsix "https://github.com/microsoft/vscode-python/releases/download/${CODESERVER_PYTHON_VERSION}/ms-python-release.vsix" \
+# install - codeserver extensions 
+RUN curl -# -L -o /tmp/ms-python-release.vsix "https://marketplace.visualstudio.com/_apis/public/gallery/publishers/ms-python/vsextensions/python/${CODESERVER_PYTHON_VERSION}/vspackage" \
     && code-server --install-extension /tmp/ms-python-release.vsix \
     && code-server --list-extensions --show-versions
 

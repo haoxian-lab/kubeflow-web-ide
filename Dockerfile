@@ -49,7 +49,7 @@ ENV SHELL /bin/bash
 
 # args - software versions
 # renovate: datasource=github-tags depName=cdr/code-server versioning=semver
-ARG CODESERVER_VERSION=v4.12.0
+ARG CODESERVER_VERSION=v4.10.0
 
 # args - software versions
 ARG KUBECTL_ARCH="amd64"

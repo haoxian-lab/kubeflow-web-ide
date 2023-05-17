@@ -67,8 +67,6 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get -yq install --no-install-recommends \
     apt-transport-https \
     sudo \
-    python3.10 \
-    python3-pip \
     apt-utils \
     git \
     bash \
@@ -87,6 +85,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     vim \
     wget \
     zip \
+    htop \
+    nvtop \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -99,13 +99,6 @@ RUN export GNUPGHOME=/tmp/ \
     && chmod +x /tmp/s6-overlay-${S6_VERSION}-installer \
     && /tmp/s6-overlay-${S6_VERSION}-installer / \
     && rm /tmp/s6-overlay-${S6_VERSION}-installer.sig /tmp/s6-overlay-${S6_VERSION}-installer
-
-# install - kubectl
-RUN curl -sL "https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${KUBECTL_ARCH}/kubectl" -o /usr/local/bin/kubectl \
-    && curl -sL "https://dl.k8s.io/${KUBECTL_VERSION}/bin/linux/${KUBECTL_ARCH}/kubectl.sha256" -o /tmp/kubectl.sha256 \
-    && echo "$(cat /tmp/kubectl.sha256) /usr/local/bin/kubectl" | sha256sum --check \
-    && rm /tmp/kubectl.sha256 \
-    && chmod +x /usr/local/bin/kubectl
 
 # create user and set required ownership
 RUN useradd -M -s /bin/bash -N -u ${NB_UID} ${NB_USER} \
@@ -122,8 +115,6 @@ ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 USER root
-
-
 
 # install - code-server
 RUN curl -sL "https://github.com/cdr/code-server/releases/download/${CODESERVER_VERSION}/code-server_${CODESERVER_VERSION/v/}_amd64.deb" -o /tmp/code-server.deb \

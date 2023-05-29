@@ -49,7 +49,7 @@ ENV SHELL /bin/bash
 
 # args - software versions
 # renovate: datasource=github-tags depName=cdr/code-server versioning=semver
-ARG CODESERVER_VERSION=v4.10.0
+ARG CODESERVER_VERSION=v4.13.0
 
 # args - software versions
 ARG KUBECTL_ARCH="amd64"
@@ -187,6 +187,9 @@ RUN python3 -m pip install -r /tmp/requirements.txt --quiet --no-cache-dir \
     && rm -f /tmp/requirements.txt \
     && chown -R ${NB_USER}:users ${CONDA_DIR} \
     && chown -R ${NB_USER}:users ${HOME}
+
+# install - codeserver extensions 
+RUN code-server --install-extension ms-python.python
 
 # s6 - copy scripts
 COPY --chown=jovyan:users s6/ /etc

@@ -1,0 +1,36 @@
+version: '3.0'
+services:
+  code-server:
+    hostname: code-server
+    container_name: coder-server
+    image: sharockys/vscode-py-cuda
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.coder:/var/run/coder
+    ports:
+      - 7080:7080
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+    networks:
+      - code_server_network
+    environment:
+      - DEVURL_HOST=hw-code-server.com
+
+  nginx:
+    container_name: nginx
+    hostname: reverse
+    image: nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - "../../nginx:/etc/nginx"
+      - "../../certs:/certs"
+
+networks:
+  code_server_network:

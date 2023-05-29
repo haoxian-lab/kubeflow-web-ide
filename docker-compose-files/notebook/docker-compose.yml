@@ -2,8 +2,8 @@ version: '3.0'
 services:
   main:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../..
+      dockerfile: ../../Dockerfile
     environment:
       - JUPYTER_TOKEN=passwd # TODO: Change the token
     user: ${UID}:${GID}

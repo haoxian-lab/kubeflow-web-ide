@@ -1,0 +1,14 @@
+2023-05-29 21:53:37,394:DEBUG:certbot._internal.main:certbot version: 2.6.0
+2023-05-29 21:53:37,394:DEBUG:certbot._internal.main:Location of certbot entry point: /usr/local/bin/certbot
+2023-05-29 21:53:37,394:DEBUG:certbot._internal.main:Arguments: ['--nginx', '--config-dir', 'certs', '--work-dir', 'workdir', '--logs-dir', 'cert-logs']
+2023-05-29 21:53:37,394:DEBUG:certbot._internal.main:Discovered plugins: PluginsRegistry(PluginEntryPoint#apache,PluginEntryPoint#manual,PluginEntryPoint#nginx,PluginEntryPoint#null,PluginEntryPoint#standalone,PluginEntryPoint#webroot)
+2023-05-29 21:53:37,433:DEBUG:certbot._internal.log:Root logging level set at 30
+2023-05-29 21:53:37,435:DEBUG:certbot._internal.plugins.selection:Requested authenticator nginx and installer nginx
+2023-05-29 21:53:37,439:DEBUG:certbot._internal.plugins.disco:No installation (PluginEntryPoint#nginx): Could not find a usable 'nginx' binary. Ensure nginx exists, the binary is executable, and your PATH is set correctly.
+Traceback (most recent call last):
+  File "/usr/local/Cellar/certbot/2.6.0/libexec/lib/python3.11/site-packages/certbot/_internal/plugins/disco.py", line 111, in prepare
+    self._initialized.prepare()
+  File "/usr/local/Cellar/certbot/2.6.0/libexec/lib/python3.11/site-packages/certbot_nginx/_internal/configurator.py", line 194, in prepare
+    raise errors.NoInstallationError(
+certbot.errors.NoInstallationError: Could not find a usable 'nginx' binary. Ensure nginx exists, the binary is executable, and your PATH is set correctly.
+2023-05-29 21:53:37,441:DEBUG:certbot._internal.plugins.selection:No candidate plugin

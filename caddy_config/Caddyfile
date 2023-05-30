@@ -1,0 +1,4 @@
+
+    code-server.localhost
+
+reverse_proxy http://code-server:8888    

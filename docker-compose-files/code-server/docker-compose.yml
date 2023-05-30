@@ -2,13 +2,11 @@ version: '3.0'
 services:
   code-server:
     hostname: code-server
-    container_name: coder-server
+    container_name: code-server
     image: sharockys/vscode-py-cuda
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ~/.coder:/var/run/coder
-    ports:
-      - 7080:7080
     deploy:
       resources:
         reservations:
@@ -19,18 +17,22 @@ services:
     networks:
       - code_server_network
     environment:
-      - DEVURL_HOST=hw-code-server.com
+      - DEVURL_HOST=code-server.localhost
 
-  nginx:
-    container_name: nginx
-    hostname: reverse
-    image: nginx
+  caddy:
+    container_name: caddy
+    hostname: caddy
+    image: caddy:alpine
+    links:
+      - "code-server:code"
     ports:
       - 80:80
       - 443:443
     volumes:
-      - "../../nginx:/etc/nginx"
+      - "../../caddy_config:/etc/caddy"
       - "../../certs:/certs"
+    networks:
+      - code_server_network
 
 networks:
   code_server_network:

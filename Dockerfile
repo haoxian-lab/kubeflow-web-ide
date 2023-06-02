@@ -87,8 +87,10 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     zip \
     htop \
     nvtop \
+    && apt-get remove python3 python3-pip \ 
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+    # removed python because we are going to use conda
 
 # install - s6 overlay
 RUN export GNUPGHOME=/tmp/ \

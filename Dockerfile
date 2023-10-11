@@ -1,14 +1,14 @@
-FROM nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04 AS cuda
+FROM nvidia/cuda:12.1.0-cudnn8-devel-ubuntu22.04 AS cuda
 
 FROM cuda as notebook
 # Set bash as the default shell
 ENV SHELL=/bin/bash
 
-ARG PYTORCH='2.0.0'
+ARG PYTORCH='2.1.0'
 # (not always a valid torch version)
 ARG INTEL_TORCH_EXT='1.11.0'
 # Example: `cu102`, `cu113`, etc.
-ARG CUDA='cu117'
+ARG CUDA='cu121'
 
 # Build with some basic utilities
 RUN apt-get update && apt-get install -y \
@@ -146,11 +146,11 @@ ARG MINIFORGE_ARCH="x86_64"
 ARG MINIFORGE_VERSION=23.1.0-1
 ARG PIP_VERSION=21.1.2
 ARG PYTHON_VERSION=3.10
-ARG PYTORCH='2.0.0'
+ARG PYTORCH='2.1.0'
 # (not always a valid torch version)
 ARG INTEL_TORCH_EXT='1.11.0'
 # Example: `cu102`, `cu113`, etc.
-ARG CUDA='cu117'
+ARG CUDA='cu121'
 
 # setup environment for conda
 ENV CONDA_DIR /opt/conda

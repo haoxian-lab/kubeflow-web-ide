@@ -1,6 +1,5 @@
 torch 
 transformers 
-deepspeed
 accelerate
 bitsandbytes
 datasets
@@ -8,8 +7,6 @@ optimum
 notifiers
 numpy
 pandas
-onnx 
-onnxruntime
 scikit-learn
 ipykernel
 ipywidgets
